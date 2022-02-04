@@ -1,5 +1,6 @@
 import React from 'react'
 import { MdDeleteForever } from 'react-icons/md'
+import { MdAddBox } from 'react-icons/md'
 
 export default function Sidebar(props) {
     //console.log(props)
@@ -12,7 +13,7 @@ export default function Sidebar(props) {
                 }`}
                 onClick={() => props.setCurrentNoteId(note.id)}
             >
-                <p>Note {index+1}</p>
+                <p className="note-element-title">{note.body.split("\n")[0]}</p>
                 <MdDeleteForever id="delete-button" onClick={(event)=>props.deleteNote(event, note.id)}/>
             </div>
         )
@@ -21,9 +22,9 @@ export default function Sidebar(props) {
         <div className="sidebar-container">
             <div id="sidebar-header">
                 <h1 id="sidebar-header-title">Notes</h1>
-                <button id="sidebar-header-button" onClick={props.newNote}><h3>+</h3></button>
+                <MdAddBox id="sidebar-header-button" onClick={props.newNote} />
             </div>
-            <div>
+            <div className="font-link">
                 {noteElements}
             </div>
         </div>
